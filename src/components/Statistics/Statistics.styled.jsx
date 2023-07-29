@@ -32,7 +32,7 @@ export const StatList = styled.div`
     color: purple;
   }
 
-  .feedback-stat.positive-percentage span {
+  .feedback-stat.positive-feedback span {
     color: #47ab5f;
   }
 `;

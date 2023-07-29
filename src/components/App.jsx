@@ -2,8 +2,12 @@ import { useState } from 'react';
 import { FeedbackOptions, Notification, Section, Statistics } from 'components';
 
 const App = () => {
-  const [feedback, setFeedback] = useState({ good: 0, neutral: 0, bad: 0 });
-  
+  const [feedback, setFeedback] = useState({
+    good: 0,
+    neutral: 0,
+    bad: 0,
+  });
+
   const { good, neutral, bad } = feedback;
 
   const handleFeedback = event => {
@@ -12,7 +16,7 @@ const App = () => {
       ...prevState,
       [option]: prevState[option] + 1,
     }));
-    event.target.blur(); 
+    event.target.blur();
   };
 
   const countTotalFeedback = () => {
@@ -20,14 +24,12 @@ const App = () => {
   };
 
   const countPositiveFeedbackPercentage = () => {
-    const total = countTotalFeedback();
-    const { good } = feedback;
     return total === 0 ? 0 : Math.round((good / total) * 100);
   };
 
   const total = countTotalFeedback();
   const positivePercentage = countPositiveFeedbackPercentage();
-  const options = Object.keys(feedback); 
+  const options = Object.keys(feedback);
 
   return (
     <div className="container">
@@ -40,9 +42,7 @@ const App = () => {
         ) : (
           <>
             <Statistics
-              good={good}
-              neutral={neutral}
-              bad={bad}
+              feedback={feedback}
               total={total}
               positivePercentage={positivePercentage}
             />
