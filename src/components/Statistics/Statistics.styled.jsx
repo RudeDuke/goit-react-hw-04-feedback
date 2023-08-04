@@ -1,4 +1,13 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
 
 export const StatList = styled.div`
   margin: 0 auto;
@@ -8,6 +17,7 @@ export const StatList = styled.div`
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.5s ease-in-out;
 
   .feedback-stat {
     display: flex;
@@ -35,4 +45,7 @@ export const StatList = styled.div`
   .feedback-stat.positive-feedback span {
     color: #47ab5f;
   }
+
+  animation: ${fadeIn} 0.5s ease-in-out;
+};
 `;
